@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorindicator">#14d0d8</color>
+    <color name="white_blur">#bf9c9c9c</color>
+
+
+    <color name="text_color">#ff666666</color>
+    <color name="color_ads">#14d0d8</color>
+    <color name="color_white">#ffffffff</color>
+    <color name="color_gray_2_ads">#fff8f8f8</color>
+    <color name="stocke_card">#5E58595A</color>
+
+    <color name="light_transparent">#16000000</color>
+</resources>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_310sdp"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    tools:background="@drawable/bg_header_home">
+
+    <LinearLayout
+        android:id="@+id/ll_value"
+        android:layout_width="match_parent"
+        app:layout_constraintBottom_toTopOf="@+id/rl_home"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/left"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_centerHorizontal="true"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="arrows_to_right.json"
+                app:lottie_loop="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_memory_used"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quartzitalic"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_25sdp"
+                android:textStyle="bold"
+                tools:text="65" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_10sdp"
+                    android:background="@drawable/round_memory" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:fontFamily="@font/rubik_regular"
+                    android:text="@string/memory_used"
+                    android:textColor="@color/white_80"
+                    android:textSize="@dimen/_9sdp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_storage_used"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quartzitalic"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_25sdp"
+                android:textStyle="bold"
+                tools:text="15" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_10sdp"
+                    android:background="@drawable/round_storage" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:fontFamily="@font/rubik_regular"
+                    android:text="@string/storage_used"
+                    android:textColor="@color/white_80"
+                    android:textSize="@dimen/_9sdp" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/right"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_centerHorizontal="true"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="arrows__to_left.json"
+                app:lottie_loop="true" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_home"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="@+id/ll_value">
+
+        <ImageView
+            android:layout_width="@dimen/_235sdp"
+            android:layout_height="@dimen/_235sdp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/bg_progessbar_main" />
+
+        <com.gm.phonecleaner.widget.circularprogressindicator.CircularProgressIndicator
+            android:id="@+id/prg_storage_used"
+            android:layout_width="@dimen/_185sdp"
+            android:layout_height="@dimen/_185sdp"
+            android:layout_centerInParent="true"
+            app:direction="clockwise"
+            app:drawDot="false"
+            app:enableProgressAnimation="true"
+            app:gradientEndColor="@android:color/transparent"
+            app:gradientType="sweep"
+            app:progressBackgroundColor="#1AFFFFFF"
+            app:progressBackgroundStrokeWidth="@dimen/_20sdp"
+            app:progressColor="@color/color_a8f257"
+            app:progressStrokeWidth="@dimen/_20sdp"
+            app:startAngle="90"
+            app:textColor="@android:color/transparent" />
+
+        <com.gm.phonecleaner.widget.circularprogressindicator.CircularProgressIndicator
+            android:id="@+id/prg_memory_used"
+            android:layout_width="@dimen/_135sdp"
+            android:layout_height="@dimen/_135sdp"
+            android:layout_centerInParent="true"
+            app:direction="clockwise"
+            app:drawDot="false"
+            app:enableProgressAnimation="true"
+            app:gradientEndColor="@android:color/transparent"
+            app:gradientType="sweep"
+            app:progressBackgroundColor="#0DFFFFFF"
+            app:progressBackgroundStrokeWidth="@dimen/_20sdp"
+            app:progressColor="@color/color_08e3c3"
+            app:progressStrokeWidth="@dimen/_20sdp"
+            app:startAngle="90"
+            app:textColor="@android:color/transparent" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/im_main"
+            android:layout_width="@dimen/_175sdp"
+            android:layout_height="@dimen/_175sdp"
+            android:layout_centerHorizontal="true"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="home_robot.json"
+            app:lottie_loop="true" />
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

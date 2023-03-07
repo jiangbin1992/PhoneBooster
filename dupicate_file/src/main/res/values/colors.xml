@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#16DFE8</color>
+    <color name="colorPrimaryDark">#14d0d8</color>
+    <color name="colorAccent">#14d0d8</color>
+    <color name="colorPrimaryDarkPress">#18b6bc</color>
+
+    <color name="white">#ffffff</color>
+
+    <color name="text_color">#ff666666</color>
+    <!-- Use with black text -->
+    <color name="gray">#8f8f8f</color>
+    <color name="black">#000000</color>
+    <color name="background">#fcfcfc</color>
+    <color name="backgroundf">#00C853</color>
+</resources>

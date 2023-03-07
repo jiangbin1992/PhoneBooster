@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_header_clean_notification"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <include
+        android:id="@+id/layout_padding"
+        layout="@layout/layout_toolbar" />
+
+    <ImageView
+        android:layout_below="@+id/layout_padding"
+        android:id="@+id/iv_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="@dimen/_40sdp"
+        android:src="@drawable/ic_notification_clean_guide_phone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/iv_phone"
+        android:layout_alignTop="@+id/iv_phone"
+        android:layout_alignEnd="@+id/iv_phone"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:paddingStart="24dp"
+        android:paddingTop="30dp"
+        android:paddingEnd="24dp">
+
+        <LinearLayout
+            android:id="@+id/layout_item_0"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="14dp">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="6dp"
+                android:src="@drawable/ic_mute_notification" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Notificationbar_Spamnotification"
+                        android:textColor="@color/color_404040"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <TextView
+                        android:id="@+id/tv_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#ff9100"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="12dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <View
+                        android:id="@+id/iv_icon_1"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:background="@drawable/bg_notification_clean_guide_icon"
+                        android:visibility="gone" />
+
+                    <View
+                        android:id="@+id/iv_icon_2"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginStart="6dp"
+                        android:background="@drawable/bg_notification_clean_guide_icon"
+                        android:visibility="gone" />
+
+                    <View
+                        android:id="@+id/iv_icon_3"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginStart="6dp"
+                        android:background="@drawable/bg_notification_clean_guide_icon"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_item_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_notification_clean_guide_list_item" />
+
+        <ImageView
+            android:id="@+id/iv_item_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_notification_clean_guide_list_item" />
+
+        <ImageView
+            android:id="@+id/iv_item_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_notification_clean_guide_list_item" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_start_0_0"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:layout_alignTop="@+id/iv_phone"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="120dp"
+        android:src="@drawable/iv_notification_clean_guide_star"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/iv_start_0_1"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:layout_alignTop="@+id/iv_phone"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="46dp"
+        android:src="@drawable/iv_notification_clean_guide_star"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/iv_start_0_2"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:layout_alignTop="@+id/iv_phone"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="190dp"
+        android:src="@drawable/iv_notification_clean_guide_star"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/iv_start_1_0"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:layout_alignTop="@+id/iv_phone"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="110dp"
+        android:src="@drawable/iv_notification_clean_guide_star"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/iv_start_1_1"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_alignTop="@+id/iv_phone"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="136dp"
+        android:src="@drawable/iv_notification_clean_guide_star"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/iv_start_1_2"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:layout_above="@+id/layout_bottom"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="110dp"
+        android:src="@drawable/iv_notification_clean_guide_star"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/iv_start_1_3"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_above="@+id/layout_bottom"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="75dp"
+        android:src="@drawable/iv_notification_clean_guide_star"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/layout_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@string/Notificationbarcleanup_Guide1"
+            android:textColor="@color/color_707070"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btn_open"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_button_clean"
+            android:text="@string/Notificationbarcleanup_RightNow"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12sdp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</RelativeLayout>

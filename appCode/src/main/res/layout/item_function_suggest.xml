@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_5sdp"
+    android:background="@drawable/card_view_optimize"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="match_parent">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/view_suggest_left"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:riv_corner_radius_bottom_left="@dimen/_5sdp"
+            app:riv_corner_radius_top_left="@dimen/_5sdp"
+            android:src="@drawable/bg_func_junkfile"/>
+
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/im_icon"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:src="@drawable/logo" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="0.5dp"
+        android:layout_height="match_parent"
+        android:alpha="0.7"
+        android:background="@color/colorPrimary" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:textColor="@color/color_173e58"
+            android:fontFamily="@font/rubik_regular"
+            android:textSize="@dimen/_10sdp"
+            tools:text="phone boost" />
+
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_title"
+            android:fontFamily="@font/rubik_regular"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/color_9E9E9E"
+            android:textSize="@dimen/_11sdp"
+            android:lines="2"
+            tools:text="@string/data_manager" />
+
+        <TextView
+            android:id="@+id/tv_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_description"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/rubik_regular"
+            android:textAllCaps="true"
+            android:textSize="@dimen/_11sdp"
+            android:textStyle="bold"
+            tools:text="try" />
+    </RelativeLayout>
+</LinearLayout>

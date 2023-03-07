@@ -1,0 +1,31 @@
+<resources>
+
+
+    <string name="confirm_exit">Do you really want to exit?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <string name="rate_msg">Our team are working very hard to give you the best free application. Your 5-star review is worth more than all money. Please write a nice review in Google Play to encourage me.</string>
+    <string name="remind_later">Remind later</string>
+    <string name="good_5_stars">Good, 5 stars</string>
+    <string name="not_good">Not good</string>
+    <string name="title_dialog_feed_back">Send a feed back</string>
+    <string name="message_dialog_feed_back">Request bug fix and implement new features via email</string>
+    <string name="exit_app">Exit</string>
+
+    <string name="confirm_close">Are you sure you want to close this activity?</string>
+
+    <string name="rate_app">Rate App</string>
+    <string name="install_app_ads">Install Now</string>
+
+    // Title mail and email feed back
+    <string name="Title_email" translatable="false">FeedBack of [Phone Cleaner]</string>
+    <string name="email_feedback" translatable="false">jeetuasusm1@gmail.com</string>
+
+    //Info id admob, you can change
+<!--    <string name="admob_app_id" translatable="false">ca-app-pub-6474338300884334~8243423113</string>-->
+<!--    <string name="admob_native" translatable="false">ca-app-pub-6474338300884334/1775638560</string>-->
+<!--    <string name="admob_full" translatable="false">ca-app-pub-6474338300884334/8953869551</string>-->
+<!--    <string name="admob_banner" translatable="false">ca-app-pub-6474338300884334~8243423113</string>-->
+
+</resources>

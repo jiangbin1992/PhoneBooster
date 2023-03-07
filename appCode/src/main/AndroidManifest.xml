@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.gm.phonecleaner"
+    android:versionCode="2"
+    android:versionName="1.1.0">
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BROADCAST_CLOSE_SYSTEM_DIALOGS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.GET_PACKAGE_SIZE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.QUICKBOOT_POWERON" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
+
+
+    <uses-permission
+        android:name="android.permission.CLEAR_APP_CACHE"
+        tools:ignore="ProtectedPermissions" />
+
+    <uses-permission
+        android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
+
+    <!--applock-->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <!--    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />-->
+
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:screenOrientation="portrait"
+        android:supportsRtl="true">
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+
+        <activity
+            android:name="com.gm.phonecleaner.ui.splash.SplashActivity"
+            android:exported="true">
+        </activity>
+
+        <activity android:name="com.gm.phonecleaner.ui.main.MainActivity" />
+
+        <activity android:name="com.gm.phonecleaner.ui.setting.SettingActivity" />
+        <activity android:name="com.gm.phonecleaner.ui.phoneboost.PhoneBoostActivity" />
+        <activity android:name="com.gm.phonecleaner.ui.result.ResultAcitvity" />
+        <activity android:name="com.gm.phonecleaner.ui.guildPermission.GuildPermissionActivity" />
+        <activity android:name="com.gm.phonecleaner.ui.junkfile.JunkFileActivity" />
+        <activity android:name="com.gm.phonecleaner.ui.listAppSelect.AppSelectActivity" />
+        <activity android:name="com.gm.phonecleaner.ui.gameboost.GameBoostActivity" />
+        <activity android:name="com.gm.phonecleaner.ui.appManager.AppManagerActivity" />
+        <activity android:name="com.gm.phonecleaner.ui.smartCharger.SmartChargerBoostActivity" />
+        <activity android:name="com.gm.phonecleaner.ui.smartCharger.SmartChargerActivity" />
+        <activity android:name="com.gm.phonecleaner.ui.cleanNotification.NotificationCleanSettingActivity" />
+        <activity android:name="com.gm.phonecleaner.ui.cleanNotification.NotificationCleanActivity" />
+        <activity android:name="com.gm.phonecleaner.ui.cleanNotification.NotificationCleanGuildActivity" />
+        <activity android:name="com.gm.phonecleaner.ui.antivirus.AntivirusActivity" />
+        <activity android:name="com.gm.phonecleaner.ui.ExitActivity" />
+        <activity android:name="com.gm.phonecleaner.ui.antivirus.ScanAppInstallActivity" />
+        <activity android:name="com.gm.phonecleaner.ui.antivirus.ScanAppUninstallActivity" />
+        <activity android:name="com.gm.phonecleaner.ui.notDissturb.NotDissturbActivity" />
+
+        <service
+            android:name="com.gm.phonecleaner.service.ForceStopAccessibility"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_service_config" />
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="com.gm.phonecleaner.service.NotificationListener"
+            android:exported="false"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="com.gm.phonecleaner.service.ServiceManager"
+            android:exported="false" />
+
+        <receiver android:name="com.gm.phonecleaner.rec.BatteryStatusRec" />
+        <receiver android:name="com.gm.phonecleaner.rec.PackageRec" />
+        <receiver
+            android:name="com.gm.phonecleaner.rec.AlarmRec"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.app.action.alarmmanager" />
+            </intent-filter>
+        </receiver>
+
+        <!--app lock-->
+        <receiver
+            android:name="com.gm.phonecleaner.password.receiver.LockRestarterBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:label="RestartServiceWhenStopped" />
+
+        <activity
+            android:name="com.gm.phonecleaner.password.act.main.SplashLockActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AppCompat.Translucent.lock" />
+        <activity
+            android:name="com.gm.phonecleaner.password.act.pwd.CreatePwdLockActivity"
+            android:label="@string/create_password"
+            android:theme="@style/Theme.AppCompat.Translucent.lock" />
+        <activity
+            android:name="com.gm.phonecleaner.password.act.lock.GestureSelfUnlockLockActivity"
+            android:label="Unlock"
+            android:theme="@style/Theme.AppCompat.Translucent.lock" />
+        <activity
+            android:name="com.gm.phonecleaner.password.act.lock.GestureUnlockLockActivity"
+            android:excludeFromRecents="true"
+            android:label=""
+            android:launchMode="singleTask"
+            android:noHistory="true"
+            android:theme="@style/unlock_activity_style" />
+        <activity
+            android:name="com.gm.phonecleaner.password.act.setting.LockSettingLockActivity"
+            android:label="Settings"
+            android:theme="@style/Theme.AppCompat.Translucent.lock" />
+        <activity
+            android:name="com.gm.phonecleaner.password.act.lock.GestureCreateLockActivity"
+            android:label="@string/create_pattern_lock"
+            android:theme="@style/Theme.AppCompat.Translucent.lock" />
+        <activity
+            android:name="com.gm.phonecleaner.password.act.main.MainLockActivity"
+            android:theme="@style/Theme.AppCompat.Translucent.lock" />
+        <activity
+            android:name="com.gm.phonecleaner.password.act.setting.SecuritySettingActivity"
+            android:theme="@style/Theme.AppCompat.Translucent.lock" />
+
+        <service android:name="com.gm.phonecleaner.password.services.LoadAppListService" />
+        <service android:name="com.gm.phonecleaner.password.services.LockService" />
+
+        <receiver
+            android:name="com.gm.phonecleaner.password.receiver.BootBroadcastReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="com.gm.phonecleaner.rec.AutoRebootRec"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+            <intent-filter android:priority="99999">
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.SCREEN_ON" />
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.net.wifi.STATE_CHANGE" />
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>
