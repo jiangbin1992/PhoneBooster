@@ -95,7 +95,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/_10sdp"
                         android:fontFamily="@font/nunitoregular"
-                        android:text="@string/share"
+                        android:text="Privacy Policy"
                         android:textColor="@color/color_222222"
                         android:textSize="@dimen/_12sdp" />
                 </LinearLayout>

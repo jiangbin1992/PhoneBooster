@@ -1,5 +1,6 @@
 package com.gm.phonecleaner.ui.main;
 
+import static com.best.now.myad.utils.Constant.URL_PRIVACY_POLICY;
 import static com.gm.phonecleaner.password.utils.NotificationUtil.cancelNotification;
 
 import android.app.Service;
@@ -15,6 +16,7 @@ import androidx.core.content.ContextCompat;
 
 import com.ads.control.Rate;
 import com.ads.control.funtion.UtilsApp;
+import com.best.now.myad.WebActivity;
 import com.gm.phonecleaner.R;import com.gm.phonecleaner.R2;
 import com.gm.phonecleaner.adp.CustomFragmentPagerAdp;
 import com.gm.phonecleaner.listener.ObserverPartener.ObserverInterface;
@@ -100,7 +102,8 @@ public class MainActivity extends BaseActivity implements ObserverInterface {
         UtilsApp.OpenBrower(this,getResources().getString(R.string.link_store_more_app));
     }
     public void share(View v){
-        UtilsApp.shareApp(this);
+//        UtilsApp.shareApp(this);
+        WebActivity.Companion.startActivity(MainActivity.this,"Privacy Policy",URL_PRIVACY_POLICY);
     }
     public void likeFacebook(View v){
 
