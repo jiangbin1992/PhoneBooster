@@ -185,152 +185,152 @@ public class AdmobHelp {
 
     }
     public  void loadBannerFragment(final Activity mActivity,final View rootView) {
-        final ShimmerFrameLayout containerShimmer =
-                (ShimmerFrameLayout) rootView.findViewById(R.id.shimmer_container);
-
-        containerShimmer.setVisibility(View.VISIBLE);
-        containerShimmer.startShimmer();
-        final LinearLayout adContainer = (LinearLayout) rootView.findViewById(R.id.banner_container);
-
-        try {
-            AdView adView = new AdView(mActivity);
-            adView.setAdUnitId(Constant.AD_BANNER_ID);
-            adContainer.addView(adView);
-            AdSize adSize = getAdSize(mActivity);
-            // Step 4 - Set the adaptive ad size on the ad view.
-            adView.setAdSize(adSize);
-
-
-            adView.loadAd(new AdRequest.Builder().build());
-            adView.setAdListener(new AdListener() {
-                @Override
-                public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                    super.onAdFailedToLoad(loadAdError);
-                    adContainer.setVisibility(View.GONE);
-                    containerShimmer.stopShimmer();
-                    containerShimmer.setVisibility(View.GONE);
-                }
-
-                @Override
-                public void  onAdLoaded(){
-                    containerShimmer.stopShimmer();
-                    containerShimmer.setVisibility(View.GONE);
-                    adContainer.setVisibility(View.VISIBLE);
-
-
-                }
-            });
-
-
-        } catch (Exception e) {
-        }
+//        final ShimmerFrameLayout containerShimmer =
+//                (ShimmerFrameLayout) rootView.findViewById(R.id.shimmer_container);
+//
+//        containerShimmer.setVisibility(View.VISIBLE);
+//        containerShimmer.startShimmer();
+//        final LinearLayout adContainer = (LinearLayout) rootView.findViewById(R.id.banner_container);
+//
+//        try {
+//            AdView adView = new AdView(mActivity);
+//            adView.setAdUnitId(Constant.AD_BANNER_ID);
+//            adContainer.addView(adView);
+//            AdSize adSize = getAdSize(mActivity);
+//            // Step 4 - Set the adaptive ad size on the ad view.
+//            adView.setAdSize(adSize);
+//
+//
+//            adView.loadAd(new AdRequest.Builder().build());
+//            adView.setAdListener(new AdListener() {
+//                @Override
+//                public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+//                    super.onAdFailedToLoad(loadAdError);
+//                    adContainer.setVisibility(View.GONE);
+//                    containerShimmer.stopShimmer();
+//                    containerShimmer.setVisibility(View.GONE);
+//                }
+//
+//                @Override
+//                public void  onAdLoaded(){
+//                    containerShimmer.stopShimmer();
+//                    containerShimmer.setVisibility(View.GONE);
+//                    adContainer.setVisibility(View.VISIBLE);
+//
+//
+//                }
+//            });
+//
+//
+//        } catch (Exception e) {
+//        }
     }
 
     public void loadNative(final Activity mActivity){
-        final ShimmerFrameLayout containerShimmer =
-                (ShimmerFrameLayout) mActivity.findViewById(R.id.shimmer_container);
-        containerShimmer.setVisibility(View.VISIBLE);
-        containerShimmer.startShimmer();
-        VideoOptions videoOptions = new VideoOptions.Builder()
-                .setStartMuted(false)
-                .build();
-
-        NativeAdOptions adOptions = new NativeAdOptions.Builder()
-                .setVideoOptions(videoOptions)
-                .build();
-
-
-        AdLoader adLoader = new AdLoader.Builder(mActivity, Constant.AD_INTERSTITIAL_ID)
-                .forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
-                    @Override
-                    public void onNativeAdLoaded(@NonNull NativeAd nativeAd) {
-                        // Show the ad.
-                        if (nativeAd != null) {
-                            nativeAd.destroy();
-                        }
-                        containerShimmer.stopShimmer();
-                        containerShimmer.setVisibility(View.GONE);
-
-                        FrameLayout frameLayout =
-                                mActivity.findViewById(R.id.fl_adplaceholder);
-                        if(frameLayout!=null){
-                            frameLayout.setVisibility(View.VISIBLE);
-                            NativeAdView adView = (NativeAdView) mActivity.getLayoutInflater()
-                                    .inflate(R.layout.native_admob_ad, null);
-                            populateUnifiedNativeAdView(nativeAd, adView);
-                            frameLayout.removeAllViews();
-                            frameLayout.addView(adView);
-                        }
-
-                    }
-                })
-                .withAdListener(new AdListener() {
-                    @Override
-                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                        super.onAdFailedToLoad(loadAdError);
-                        containerShimmer.stopShimmer();
-                        containerShimmer.setVisibility(View.GONE);
-                    }
-                })
-                .withNativeAdOptions(adOptions)
-                .build();
-
-//        adLoader.loadAd(new PublisherAdRequest.Builder().build());
-        adLoader.loadAd(new AdRequest.Builder().build());
+//        final ShimmerFrameLayout containerShimmer =
+//                (ShimmerFrameLayout) mActivity.findViewById(R.id.shimmer_container);
+//        containerShimmer.setVisibility(View.VISIBLE);
+//        containerShimmer.startShimmer();
+//        VideoOptions videoOptions = new VideoOptions.Builder()
+//                .setStartMuted(false)
+//                .build();
+//
+//        NativeAdOptions adOptions = new NativeAdOptions.Builder()
+//                .setVideoOptions(videoOptions)
+//                .build();
+//
+//
+//        AdLoader adLoader = new AdLoader.Builder(mActivity, Constant.AD_INTERSTITIAL_ID)
+//                .forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
+//                    @Override
+//                    public void onNativeAdLoaded(@NonNull NativeAd nativeAd) {
+//                        // Show the ad.
+//                        if (nativeAd != null) {
+//                            nativeAd.destroy();
+//                        }
+//                        containerShimmer.stopShimmer();
+//                        containerShimmer.setVisibility(View.GONE);
+//
+//                        FrameLayout frameLayout =
+//                                mActivity.findViewById(R.id.fl_adplaceholder);
+//                        if(frameLayout!=null){
+//                            frameLayout.setVisibility(View.VISIBLE);
+//                            NativeAdView adView = (NativeAdView) mActivity.getLayoutInflater()
+//                                    .inflate(R.layout.native_admob_ad, null);
+//                            populateUnifiedNativeAdView(nativeAd, adView);
+//                            frameLayout.removeAllViews();
+//                            frameLayout.addView(adView);
+//                        }
+//
+//                    }
+//                })
+//                .withAdListener(new AdListener() {
+//                    @Override
+//                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+//                        super.onAdFailedToLoad(loadAdError);
+//                        containerShimmer.stopShimmer();
+//                        containerShimmer.setVisibility(View.GONE);
+//                    }
+//                })
+//                .withNativeAdOptions(adOptions)
+//                .build();
+//
+////        adLoader.loadAd(new PublisherAdRequest.Builder().build());
+//        adLoader.loadAd(new AdRequest.Builder().build());
     }
     public void loadNativeFragment(final Activity mActivity,final View rootView){
-        final ShimmerFrameLayout containerShimmer =
-                (ShimmerFrameLayout) rootView.findViewById(R.id.shimmer_container);
-        containerShimmer.setVisibility(View.VISIBLE);
-        containerShimmer.startShimmer();
-        VideoOptions videoOptions = new VideoOptions.Builder()
-                .setStartMuted(false)
-                .build();
-
-        NativeAdOptions adOptions = new NativeAdOptions.Builder()
-                .setVideoOptions(videoOptions)
-                .build();
-
-
-        AdLoader adLoader = new AdLoader.Builder(mActivity, Constant.AD_INTERSTITIAL_ID)
-                .forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
-                    @Override
-                    public void onNativeAdLoaded(@NonNull NativeAd nativeAd) {
-
-
-                        // Show the ad.
-                        if (nativeAd != null) {
-                            nativeAd.destroy();
-                        }
-                        containerShimmer.stopShimmer();
-                        containerShimmer.setVisibility(View.GONE);
-
-                        FrameLayout frameLayout =
-                                rootView.findViewById(R.id.fl_adplaceholder);
-                        if(frameLayout!=null){
-                            frameLayout.setVisibility(View.VISIBLE);
-                            NativeAdView adView = (NativeAdView) mActivity.getLayoutInflater()
-                                    .inflate(R.layout.native_admob_ad, null);
-                            populateUnifiedNativeAdView(nativeAd, adView);
-                            frameLayout.removeAllViews();
-                            frameLayout.addView(adView);
-                        }
-
-                    }
-                })
-                .withAdListener(new AdListener() {
-                    @Override
-                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                        super.onAdFailedToLoad(loadAdError);
-                        containerShimmer.stopShimmer();
-                        containerShimmer.setVisibility(View.GONE);
-                    }
-
-                })
-                .withNativeAdOptions(adOptions)
-                .build();
-
-        adLoader.loadAd(new AdRequest.Builder().build());
+//        final ShimmerFrameLayout containerShimmer =
+//                (ShimmerFrameLayout) rootView.findViewById(R.id.shimmer_container);
+//        containerShimmer.setVisibility(View.VISIBLE);
+//        containerShimmer.startShimmer();
+//        VideoOptions videoOptions = new VideoOptions.Builder()
+//                .setStartMuted(false)
+//                .build();
+//
+//        NativeAdOptions adOptions = new NativeAdOptions.Builder()
+//                .setVideoOptions(videoOptions)
+//                .build();
+//
+//
+//        AdLoader adLoader = new AdLoader.Builder(mActivity, Constant.AD_INTERSTITIAL_ID)
+//                .forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
+//                    @Override
+//                    public void onNativeAdLoaded(@NonNull NativeAd nativeAd) {
+//
+//
+//                        // Show the ad.
+//                        if (nativeAd != null) {
+//                            nativeAd.destroy();
+//                        }
+//                        containerShimmer.stopShimmer();
+//                        containerShimmer.setVisibility(View.GONE);
+//
+//                        FrameLayout frameLayout =
+//                                rootView.findViewById(R.id.fl_adplaceholder);
+//                        if(frameLayout!=null){
+//                            frameLayout.setVisibility(View.VISIBLE);
+//                            NativeAdView adView = (NativeAdView) mActivity.getLayoutInflater()
+//                                    .inflate(R.layout.native_admob_ad, null);
+//                            populateUnifiedNativeAdView(nativeAd, adView);
+//                            frameLayout.removeAllViews();
+//                            frameLayout.addView(adView);
+//                        }
+//
+//                    }
+//                })
+//                .withAdListener(new AdListener() {
+//                    @Override
+//                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+//                        super.onAdFailedToLoad(loadAdError);
+//                        containerShimmer.stopShimmer();
+//                        containerShimmer.setVisibility(View.GONE);
+//                    }
+//
+//                })
+//                .withNativeAdOptions(adOptions)
+//                .build();
+//
+//        adLoader.loadAd(new AdRequest.Builder().build());
     }
     private void populateUnifiedNativeAdView(NativeAd nativeAd, NativeAdView adView) {
 

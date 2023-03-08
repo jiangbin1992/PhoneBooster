@@ -15,19 +15,9 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.best.now.myad.ext.getSpValue
-import com.best.now.myad.ext.putSpValue
-import com.best.now.myad.view.AdsRewardsPop
-import com.blankj.utilcode.util.BusUtils
-import com.blankj.utilcode.util.LogUtils
-import com.blankj.utilcode.util.ScreenUtils
-import com.blankj.utilcode.util.SizeUtils
-import com.google.android.gms.ads.*
-import com.google.android.gms.ads.interstitial.InterstitialAd
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
-import com.google.android.gms.ads.rewarded.RewardedAd
-import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
 import com.best.now.myad.R
+import com.best.now.myad.ext.getSpValue
+import com.best.now.myad.view.AdsRewardsPop
 import com.lzy.okgo.OkGo
 import com.lzy.okgo.cache.CacheEntity
 import com.lzy.okgo.cache.CacheMode
@@ -68,36 +58,36 @@ fun showRewardsPop(context: Activity,count:Int) {
 /*** 为控件加载广告 */
 fun loadAd(linearLayout: LinearLayout) {
 
-    if (linearLayout.childCount == 0) {
-        var adView = AdView(linearLayout.context.applicationContext)
-        adView.adSize = AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(
-            linearLayout.context,
-            SizeUtils.px2dp(ScreenUtils.getScreenWidth().toFloat())
-        )
-//        adView.adSize = AdSize.BANNER
-        adView.adUnitId = Constant.AD_BANNER_ID
-        adView.adListener = object :AdListener(){
-            override fun onAdFailedToLoad(p0: LoadAdError) {
-                super.onAdFailedToLoad(p0)
-                LogUtils.e("adView:"+p0.message)
-            }
-
-            override fun onAdLoaded() {
-                super.onAdLoaded()
-                LogUtils.e("adView:onAdLoaded")
-            }
-        }
-        linearLayout.addView(adView)
-    }
-
-    var adView = linearLayout.getChildAt(0) as AdView
-
-    linearLayout.visibility = View.VISIBLE
-    adView.loadAd(AdRequest.Builder().build())
-
-    if (!adParentList.contains(linearLayout)) {
-        adParentList.add(linearLayout)
-    }
+//    if (linearLayout.childCount == 0) {
+//        var adView = AdView(linearLayout.context.applicationContext)
+//        adView.adSize = AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(
+//            linearLayout.context,
+//            SizeUtils.px2dp(ScreenUtils.getScreenWidth().toFloat())
+//        )
+////        adView.adSize = AdSize.BANNER
+//        adView.adUnitId = Constant.AD_BANNER_ID
+//        adView.adListener = object :AdListener(){
+//            override fun onAdFailedToLoad(p0: LoadAdError) {
+//                super.onAdFailedToLoad(p0)
+//                LogUtils.e("adView:"+p0.message)
+//            }
+//
+//            override fun onAdLoaded() {
+//                super.onAdLoaded()
+//                LogUtils.e("adView:onAdLoaded")
+//            }
+//        }
+//        linearLayout.addView(adView)
+//    }
+//
+//    var adView = linearLayout.getChildAt(0) as AdView
+//
+//    linearLayout.visibility = View.VISIBLE
+//    adView.loadAd(AdRequest.Builder().build())
+//
+//    if (!adParentList.contains(linearLayout)) {
+//        adParentList.add(linearLayout)
+//    }
 }
 
 /*** 更新广告控件 */
@@ -107,12 +97,12 @@ fun updateAdView() {
             // TODO: 广告一直显示
 //            if (isPurchased()) {
             if (false) {
-                var adView = adParentView.getChildAt(0) as AdView
-                adView?.pause()
-                adView?.destroy()
-
-                adParentView.removeAllViews()
-                adParentView.visibility = View.GONE
+//                var adView = adParentView.getChildAt(0) as AdView
+//                adView?.pause()
+//                adView?.destroy()
+//
+//                adParentView.removeAllViews()
+//                adParentView.visibility = View.GONE
             } else {
                 adParentView.visibility = View.VISIBLE
             }
@@ -120,92 +110,92 @@ fun updateAdView() {
     }
 }
 
-var mInterstitialAd: InterstitialAd? = null
-private var mRewardedAd: RewardedAd? = null
+//var mInterstitialAd: InterstitialAd? = null
+//private var mRewardedAd: RewardedAd? = null
 fun loadRewardedAds(context: Context){
-    var adRequest = AdRequest.Builder().build()
-    RewardedAd.load(context,Constant.AD_APP_REWARDED_ID, adRequest, object : RewardedAdLoadCallback() {
-        override fun onAdFailedToLoad(adError: LoadAdError) {
-            mRewardedAd = null
-        }
-        override fun onAdLoaded(rewardedAd: RewardedAd) {
-            mRewardedAd = rewardedAd
-        }
-    })
+//    var adRequest = AdRequest.Builder().build()
+//    RewardedAd.load(context,Constant.AD_APP_REWARDED_ID, adRequest, object : RewardedAdLoadCallback() {
+//        override fun onAdFailedToLoad(adError: LoadAdError) {
+//            mRewardedAd = null
+//        }
+//        override fun onAdLoaded(rewardedAd: RewardedAd) {
+//            mRewardedAd = rewardedAd
+//        }
+//    })
 }
 /*** 显示激励广告 */
 fun showRewardedAds(activity: Activity, callback: (() -> Unit)? = null) {
-    if (mRewardedAd != null) {
-        mRewardedAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
-            override fun onAdDismissedFullScreenContent() {
-                mRewardedAd = null
-                loadRewardedAds(activity)
-                callback?.invoke()
-            }
-
-            override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
-                mRewardedAd = null
-                callback?.invoke()
-            }
-
-            override fun onAdShowedFullScreenContent() {
-            }
-        }
-
-        mRewardedAd!!.show(activity, OnUserEarnedRewardListener {
-            val next = activity.getSpValue("isRewarded",0)+1
-            activity.putSpValue("isRewarded",next)
-            BusUtils.post("check")
-        })
-    } else {
-        loadRewardedAds(activity)
-        callback?.invoke()
-    }
+//    if (mRewardedAd != null) {
+//        mRewardedAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
+//            override fun onAdDismissedFullScreenContent() {
+//                mRewardedAd = null
+//                loadRewardedAds(activity)
+//                callback?.invoke()
+//            }
+//
+//            override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
+//                mRewardedAd = null
+//                callback?.invoke()
+//            }
+//
+//            override fun onAdShowedFullScreenContent() {
+//            }
+//        }
+//
+//        mRewardedAd!!.show(activity, OnUserEarnedRewardListener {
+//            val next = activity.getSpValue("isRewarded",0)+1
+//            activity.putSpValue("isRewarded",next)
+//            BusUtils.post("check")
+//        })
+//    } else {
+//        loadRewardedAds(activity)
+//        callback?.invoke()
+//    }
 
 }
 
 /*** 加载插页广告 */
 fun loadInterstitialAd(context: Context) {
-    InterstitialAd.load(
-        context,
-        Constant.AD_INTERSTITIAL_ID,
-        AdRequest.Builder().build(),
-        object : InterstitialAdLoadCallback() {
-            override fun onAdFailedToLoad(adError: LoadAdError) {
-                mInterstitialAd = null
-            }
-
-            override fun onAdLoaded(interstitialAd: InterstitialAd) {
-                mInterstitialAd = interstitialAd
-
-            }
-        })
+//    InterstitialAd.load(
+//        context,
+//        Constant.AD_INTERSTITIAL_ID,
+//        AdRequest.Builder().build(),
+//        object : InterstitialAdLoadCallback() {
+//            override fun onAdFailedToLoad(adError: LoadAdError) {
+//                mInterstitialAd = null
+//            }
+//
+//            override fun onAdLoaded(interstitialAd: InterstitialAd) {
+//                mInterstitialAd = interstitialAd
+//
+//            }
+//        })
 }
 
 /*** 显示插屏广告 */
 fun showInterstitialAd(activity: Activity, callback: (() -> Unit)? = null) {
-    if (mInterstitialAd != null) {
-        mInterstitialAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
-            override fun onAdDismissedFullScreenContent() {
-                mInterstitialAd = null
-                loadInterstitialAd(activity)
-                callback?.invoke()
-            }
-
-            override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
-                mInterstitialAd = null
-                callback?.invoke()
-            }
-
-            override fun onAdShowedFullScreenContent() {
-            }
-        }
-
-        mInterstitialAd!!.show(activity)
-    } else {
-        loadInterstitialAd(activity)
-        callback?.invoke()
-    }
+//    if (mInterstitialAd != null) {
+//        mInterstitialAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
+//            override fun onAdDismissedFullScreenContent() {
+//                mInterstitialAd = null
+//                loadInterstitialAd(activity)
+//                callback?.invoke()
+//            }
+//
+//            override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
+//                mInterstitialAd = null
+//                callback?.invoke()
+//            }
+//
+//            override fun onAdShowedFullScreenContent() {
+//            }
+//        }
+//
+//        mInterstitialAd!!.show(activity)
+//    } else {
+//        loadInterstitialAd(activity)
+//        callback?.invoke()
+//    }
 
 }
 
