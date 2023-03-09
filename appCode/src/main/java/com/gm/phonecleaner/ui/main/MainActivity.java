@@ -1,6 +1,7 @@
 package com.gm.phonecleaner.ui.main;
 
 import static com.best.now.myad.utils.Constant.URL_PRIVACY_POLICY;
+import static com.best.now.myad.utils.PublicHelperKt.loadAd;
 import static com.gm.phonecleaner.password.utils.NotificationUtil.cancelNotification;
 
 import android.app.Service;
@@ -8,6 +9,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -73,6 +75,8 @@ public class MainActivity extends BaseActivity implements ObserverInterface {
     }
 
     private void initView() {
+        LinearLayout advBanner = findViewById(R.id.advBanner);
+        loadAd(advBanner);
         mCustomFragmentPagerAdp = new CustomFragmentPagerAdp(getSupportFragmentManager());
         mFragmentHome = FragmentHome.getInstance();
         mCustomFragmentPagerAdp.addFragment(mFragmentHome, getString(R.string.title_home));

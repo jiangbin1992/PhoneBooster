@@ -62,26 +62,44 @@
             android:exported="true">
         </activity>
 
-        <activity android:name="com.gm.phonecleaner.ui.main.MainActivity" />
+        <activity android:name="com.gm.phonecleaner.ui.main.MainActivity"
+            android:screenOrientation="portrait"/>
 
-        <activity android:name="com.gm.phonecleaner.ui.setting.SettingActivity" />
-        <activity android:name="com.gm.phonecleaner.ui.phoneboost.PhoneBoostActivity" />
-        <activity android:name="com.gm.phonecleaner.ui.result.ResultAcitvity" />
-        <activity android:name="com.gm.phonecleaner.ui.guildPermission.GuildPermissionActivity" />
-        <activity android:name="com.gm.phonecleaner.ui.junkfile.JunkFileActivity" />
-        <activity android:name="com.gm.phonecleaner.ui.listAppSelect.AppSelectActivity" />
-        <activity android:name="com.gm.phonecleaner.ui.gameboost.GameBoostActivity" />
-        <activity android:name="com.gm.phonecleaner.ui.appManager.AppManagerActivity" />
-        <activity android:name="com.gm.phonecleaner.ui.smartCharger.SmartChargerBoostActivity" />
-        <activity android:name="com.gm.phonecleaner.ui.smartCharger.SmartChargerActivity" />
-        <activity android:name="com.gm.phonecleaner.ui.cleanNotification.NotificationCleanSettingActivity" />
-        <activity android:name="com.gm.phonecleaner.ui.cleanNotification.NotificationCleanActivity" />
-        <activity android:name="com.gm.phonecleaner.ui.cleanNotification.NotificationCleanGuildActivity" />
-        <activity android:name="com.gm.phonecleaner.ui.antivirus.AntivirusActivity" />
+        <activity android:name="com.gm.phonecleaner.ui.setting.SettingActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gm.phonecleaner.ui.phoneboost.PhoneBoostActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gm.phonecleaner.ui.result.ResultAcitvity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gm.phonecleaner.ui.guildPermission.GuildPermissionActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gm.phonecleaner.ui.junkfile.JunkFileActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gm.phonecleaner.ui.listAppSelect.AppSelectActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gm.phonecleaner.ui.gameboost.GameBoostActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gm.phonecleaner.ui.appManager.AppManagerActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gm.phonecleaner.ui.smartCharger.SmartChargerBoostActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gm.phonecleaner.ui.smartCharger.SmartChargerActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gm.phonecleaner.ui.cleanNotification.NotificationCleanSettingActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gm.phonecleaner.ui.cleanNotification.NotificationCleanActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gm.phonecleaner.ui.cleanNotification.NotificationCleanGuildActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gm.phonecleaner.ui.antivirus.AntivirusActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name="com.gm.phonecleaner.ui.ExitActivity" />
-        <activity android:name="com.gm.phonecleaner.ui.antivirus.ScanAppInstallActivity" />
-        <activity android:name="com.gm.phonecleaner.ui.antivirus.ScanAppUninstallActivity" />
-        <activity android:name="com.gm.phonecleaner.ui.notDissturb.NotDissturbActivity" />
+        <activity android:name="com.gm.phonecleaner.ui.antivirus.ScanAppInstallActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gm.phonecleaner.ui.antivirus.ScanAppUninstallActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gm.phonecleaner.ui.notDissturb.NotDissturbActivity"
+            android:screenOrientation="portrait"/>
 
         <service
             android:name="com.gm.phonecleaner.service.ForceStopAccessibility"
@@ -129,39 +147,49 @@
         <activity
             android:name="com.gm.phonecleaner.password.act.main.SplashLockActivity"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Translucent.lock" />
         <activity
             android:name="com.gm.phonecleaner.password.act.pwd.CreatePwdLockActivity"
             android:label="@string/create_password"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Translucent.lock" />
         <activity
             android:name="com.gm.phonecleaner.password.act.lock.GestureSelfUnlockLockActivity"
             android:label="Unlock"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Translucent.lock" />
         <activity
             android:name="com.gm.phonecleaner.password.act.lock.GestureUnlockLockActivity"
             android:excludeFromRecents="true"
             android:label=""
             android:launchMode="singleTask"
+            android:screenOrientation="portrait"
             android:noHistory="true"
             android:theme="@style/unlock_activity_style" />
         <activity
             android:name="com.gm.phonecleaner.password.act.setting.LockSettingLockActivity"
             android:label="Settings"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Translucent.lock" />
         <activity
             android:name="com.gm.phonecleaner.password.act.lock.GestureCreateLockActivity"
             android:label="@string/create_pattern_lock"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Translucent.lock" />
         <activity
             android:name="com.gm.phonecleaner.password.act.main.MainLockActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Translucent.lock" />
         <activity
             android:name="com.gm.phonecleaner.password.act.setting.SecuritySettingActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Translucent.lock" />
 
-        <service android:name="com.gm.phonecleaner.password.services.LoadAppListService" />
-        <service android:name="com.gm.phonecleaner.password.services.LockService" />
+        <service android:name="com.gm.phonecleaner.password.services.LoadAppListService"
+            android:screenOrientation="portrait"/>
+        <service android:name="com.gm.phonecleaner.password.services.LockService"
+            android:screenOrientation="portrait"/>
 
         <receiver
             android:name="com.gm.phonecleaner.password.receiver.BootBroadcastReceiver"

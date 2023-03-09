@@ -35,6 +35,7 @@
                     android:background="?attr/selectableItemBackground"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
+                    android:visibility="gone"
                     android:padding="@dimen/_2sdp"
                     android:onClick="openFeedback">
 
@@ -58,18 +59,21 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
+                    android:visibility="gone"
                     android:layout_marginLeft="@dimen/_56sdp"
                     android:background="@color/color_e1e1e1" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
+                    android:visibility="gone"
                     android:layout_marginLeft="@dimen/_56sdp"
                     android:background="@color/color_e1e1e1" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
+                    android:visibility="gone"
                     android:layout_marginLeft="@dimen/_56sdp"
                     android:background="@color/color_e1e1e1" />
 

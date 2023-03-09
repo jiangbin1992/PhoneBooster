@@ -1,5 +1,7 @@
 package com.gm.phonecleaner.ui;
 
+import static com.best.now.myad.utils.PublicHelperKt.isRewarded;
+
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -21,8 +23,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.best.now.myad.utils.PublicHelperKt;
 import com.gm.phonecleaner.PhoneCleanerApp;
-import com.gm.phonecleaner.R;import com.gm.phonecleaner.R2;
+import com.gm.phonecleaner.R;
+import com.gm.phonecleaner.R2;
 import com.gm.phonecleaner.dialog.DialogAskPermission;
 import com.gm.phonecleaner.ui.antivirus.AntivirusActivity;
 import com.gm.phonecleaner.ui.appManager.AppManagerActivity;
@@ -47,6 +51,9 @@ import com.testapp.duplicatefileremover.MainActivity;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
+
+import kotlin.Unit;
+import kotlin.jvm.functions.Function0;
 
 public class BaseActivity extends AppCompatActivity {
 
@@ -80,7 +87,7 @@ public class BaseActivity extends AppCompatActivity {
         imBackToolbar = findViewById(R.id.im_back_toolbar);
         menuView = findViewById(R.id.menu);
         notification = findViewById(R.id.notification);
-        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         loPanel = findViewById(R.id.layout_padding);
         if (loPanel != null) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && Toolbox.getHeightStatusBar(this) > 0) {
@@ -102,135 +109,163 @@ public class BaseActivity extends AppCompatActivity {
 
         if (notification != null)
             notification.setOnClickListener(view -> {
-                try {
-                startActivity(new Intent(this, NotificationCleanGuildActivity.class));
-                } catch (Exception er){
-                    try {
-                        askPermissionNotificaitonSetting(() -> {
-                            if (NotificationListener.getInstance() != null) {
-                                if (NotificationListener.getInstance().getLstSave().isEmpty()) {
-                                    startActivity(new Intent(BaseActivity.this, NotificationCleanSettingActivity.class));
-                                } else {
-                                    startActivity(new Intent(BaseActivity.this, NotificationCleanActivity.class));
+                if (isRewarded(this)) {
+                    PublicHelperKt.showInterstitialAd(BaseActivity.this, new Function0<Unit>() {
+                        @Override
+                        public Unit invoke() {
+                            try {
+                                startActivity(new Intent(BaseActivity.this, NotificationCleanGuildActivity.class));
+                            } catch (Exception er) {
+                                try {
+                                    askPermissionNotificaitonSetting(() -> {
+                                        if (NotificationListener.getInstance() != null) {
+                                            if (NotificationListener.getInstance().getLstSave().isEmpty()) {
+                                                startActivity(new Intent(BaseActivity.this, NotificationCleanSettingActivity.class));
+                                            } else {
+                                                startActivity(new Intent(BaseActivity.this, NotificationCleanActivity.class));
+                                            }
+                                        } else {
+                                            startActivity(new Intent(BaseActivity.this, NotificationCleanSettingActivity.class));
+                                        }
+                                        return null;
+                                    });
+                                } catch (Exception e) {
+                                    e.printStackTrace();
                                 }
-                            } else {
-                                startActivity(new Intent(BaseActivity.this, NotificationCleanSettingActivity.class));
                             }
                             return null;
-                        });
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                        }
+                    });
+
                 }
             });
     }
 
 
     public void openScreenFunction(Config.FUNCTION mFunction) {
-        switch (mFunction) {
-            case JUNK_FILES:
-                try {
-                    askPermissionUsageSetting(() -> {
-                        askPermissionStorage(() -> {
-                            JunkFileActivity.startActivityWithData(BaseActivity.this);
-                            return null;
-                        });
-                        return null;
-                    });
-                } catch (Exception e) {
+        if (isRewarded(this)) {
+            PublicHelperKt.showInterstitialAd(BaseActivity.this, new Function0<Unit>() {
+                @Override
+                public Unit invoke() {
+                    switch (mFunction) {
+                        case JUNK_FILES:
+                            try {
+                                askPermissionUsageSetting(() -> {
+                                    askPermissionStorage(() -> {
+                                        JunkFileActivity.startActivityWithData(BaseActivity.this);
+                                        return null;
+                                    });
+                                    return null;
+                                });
+                            } catch (Exception e) {
 
-                }
-                break;
-            case CPU_COOLER:
-            case PHONE_BOOST:
-            case POWER_SAVING:
-                try {
-                    askPermissionUsageSetting(() -> {
-                        if (PreferenceUtils.checkLastTimeUseFunction(mFunction))
-                            PhoneBoostActivity.startActivityWithData(BaseActivity.this, mFunction);
-                        else
-                            openScreenResult(mFunction);
-                        return null;
-                    });
-                } catch (Exception e) {
+                            }
 
-                }
-                break;
-            case ANTIVIRUS:
-                try {
-                    askPermissionStorage(() -> {
-                        startActivity(new Intent(this, AntivirusActivity.class));
-                        return null;
-                    });
-                } catch (Exception e) {
+                            break;
+                        case CPU_COOLER:
+                        case PHONE_BOOST:
+                        case POWER_SAVING:
 
-                }
-                break;
+                            try {
+                                askPermissionUsageSetting(() -> {
+                                    if (PreferenceUtils.checkLastTimeUseFunction(mFunction))
+                                        PhoneBoostActivity.startActivityWithData(BaseActivity.this, mFunction);
+                                    else
+                                        openScreenResult(mFunction);
+                                    return null;
+                                });
+                            } catch (Exception e) {
+
+                            }
+
+                            break;
+                        case ANTIVIRUS:
+
+                            try {
+                                askPermissionStorage(() -> {
+                                    startActivity(new Intent(BaseActivity.this, AntivirusActivity.class));
+                                    return null;
+                                });
+                            } catch (Exception e) {
+
+                            }
+
+                            break;
 
 
-            case APP_LOCK:
-                try {
-                    askPermissionUsageSetting(() -> {
-                        startActivity(new Intent(this, SplashLockActivity.class));
-                        return null;
-                    });
-                } catch (Exception e) {
+                        case APP_LOCK:
 
-                }
-                break;
-            case SMART_CHARGE:
-                if (!SystemUtil.checkCanWriteSettings(this)) {
-                    try {
-                        askPermissionUsageSetting(() -> {
-                            askPermissionWriteSetting(() -> {
+                            try {
+                                askPermissionUsageSetting(() -> {
+                                    startActivity(new Intent(BaseActivity.this, SplashLockActivity.class));
+                                    return null;
+                                });
+                            } catch (Exception e) {
+
+                            }
+
+                            break;
+                        case SMART_CHARGE:
+
+                            if (!SystemUtil.checkCanWriteSettings(BaseActivity.this)) {
+                                try {
+                                    askPermissionUsageSetting(() -> {
+                                        askPermissionWriteSetting(() -> {
+                                            startActivity(new Intent(BaseActivity.this, SmartChargerActivity.class));
+                                            return null;
+                                        });
+                                        return null;
+                                    });
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            } else {
                                 startActivity(new Intent(BaseActivity.this, SmartChargerActivity.class));
-                                return null;
-                            });
-                            return null;
-                        });
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                } else {
-                    startActivity(new Intent(this, SmartChargerActivity.class));
-                }
-                break;
+                            }
+                            break;
 //            case MESSAGE_SECURITY:
 //                break;
 //            case SMART_CLEANUP:
 //                break;
-            case DEEP_CLEAN:
-                startActivity(new Intent(this, MainActivity.class));
-                break;
-            case APP_UNINSTALL:
-                startActivity(new Intent(this, AppManagerActivity.class));
-                break;
-            case GAME_BOOSTER_MAIN:
-            case GAME_BOOSTER:
-                startActivity(new Intent(this, GameBoostActivity.class));
-                break;
-            case NOTIFICATION_MANAGER:
-                if (PreferenceUtils.isFirstUsedFunction(mFunction)) {
-                    startActivity(new Intent(this, NotificationCleanGuildActivity.class));
-                } else {
-                    try {
-                        askPermissionNotificaitonSetting(() -> {
-                            if (NotificationListener.getInstance() != null) {
-                                if (NotificationListener.getInstance().getLstSave().isEmpty()) {
-                                    startActivity(new Intent(BaseActivity.this, NotificationCleanSettingActivity.class));
-                                } else {
-                                    startActivity(new Intent(BaseActivity.this, NotificationCleanActivity.class));
-                                }
+                        case DEEP_CLEAN:
+
+                            startActivity(new Intent(BaseActivity.this, MainActivity.class));
+
+                            break;
+                        case APP_UNINSTALL:
+
+                            startActivity(new Intent(BaseActivity.this, AppManagerActivity.class));
+
+                            break;
+                        case GAME_BOOSTER_MAIN:
+                        case GAME_BOOSTER:
+
+                            startActivity(new Intent(BaseActivity.this, GameBoostActivity.class));
+
+                            break;
+                        case NOTIFICATION_MANAGER:
+
+                            if (PreferenceUtils.isFirstUsedFunction(mFunction)) {
+                                startActivity(new Intent(BaseActivity.this, NotificationCleanGuildActivity.class));
                             } else {
-                                startActivity(new Intent(BaseActivity.this, NotificationCleanSettingActivity.class));
+                                try {
+                                    askPermissionNotificaitonSetting(() -> {
+                                        if (NotificationListener.getInstance() != null) {
+                                            if (NotificationListener.getInstance().getLstSave().isEmpty()) {
+                                                startActivity(new Intent(BaseActivity.this, NotificationCleanSettingActivity.class));
+                                            } else {
+                                                startActivity(new Intent(BaseActivity.this, NotificationCleanActivity.class));
+                                            }
+                                        } else {
+                                            startActivity(new Intent(BaseActivity.this, NotificationCleanSettingActivity.class));
+                                        }
+                                        return null;
+                                    });
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
                             }
-                            return null;
-                        });
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-                break;
+                            break;
 //            case HARASSMENT_FILLTER:
 //                break;
 //            case SPEEND_PROTECTOR:
@@ -239,7 +274,13 @@ public class BaseActivity extends AppCompatActivity {
 //                break;
 //            case FILE_MOVE:
 //                break;
+                    }
+                    return null;
+                }
+            });
+
         }
+
     }
 
     public void openIgnoreScreen() {

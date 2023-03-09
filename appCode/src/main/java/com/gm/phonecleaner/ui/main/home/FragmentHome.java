@@ -1,5 +1,7 @@
 package com.gm.phonecleaner.ui.main.home;
 
+import static com.best.now.myad.utils.PublicHelperKt.isRewarded;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ads.control.AdmobHelp;
+import com.best.now.myad.utils.PublicHelperKt;
 import com.gm.phonecleaner.R;import com.gm.phonecleaner.R2;
 import com.gm.phonecleaner.adp.FunctionAdp;
 import com.gm.phonecleaner.appdata.TotalMemoryStorageTask;
@@ -20,6 +23,7 @@ import com.gm.phonecleaner.appdata.TotalRamTask;
 import com.gm.phonecleaner.listener.ObserverPartener.ObserverInterface;
 import com.gm.phonecleaner.listener.ObserverPartener.ObserverUtils;
 import com.gm.phonecleaner.listener.ObserverPartener.eventModel.EvbOnResumeAct;
+import com.gm.phonecleaner.ui.BaseActivity;
 import com.gm.phonecleaner.ui.BaseFragment;
 import com.gm.phonecleaner.ui.main.MainActivity;
 import com.gm.phonecleaner.utils.Config;
@@ -74,7 +78,7 @@ public class FragmentHome extends BaseFragment implements FunctionAdp.ClickItemL
     }
 
     public void loadAds() {
-        if (((MainActivity) Objects.requireNonNull(getActivity())).isLoadAdsNative()) {
+        if (((MainActivity) requireActivity()).isLoadAdsNative()) {
             new Handler().postDelayed(() -> {
                 AdmobHelp.getInstance().loadNativeFragment(getActivity(), getView());
             }, 1000);
