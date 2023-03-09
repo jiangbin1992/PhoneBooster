@@ -97,26 +97,27 @@ public class ResultAcitvity extends BaseActivity {
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                PublicHelperKt.showInterstitialAd(ResultAcitvity.this, new Function0<Unit>() {
+                imgDone.pauseAnimation();
+                new Handler().postDelayed(new Runnable() {
                     @Override
-                    public Unit invoke() {
-                        imgDone.pauseAnimation();
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                llDone.setVisibility(View.GONE);
-                                imCongratulation.setAnimation(mFunction != null ? mFunction.jsonResult : "restult_like.json");
-                                if (mFunction != null)
-                                    imCongratulation.setColorFilter(getResources().getColor(mFunction.color));
-                                imCongratulation.playAnimation();
-                                YoYo.with(Techniques.SlideInUp).duration(1000).playOn(scvInfor);
-                                YoYo.with(Techniques.FadeIn).duration(1000).playOn(llBackground);
-                                YoYo.with(Techniques.FadeIn).duration(1000).playOn(llToolbar);
-                            }
-                        }, 500);
-                        return null;
+                    public void run() {
+                        llDone.setVisibility(View.GONE);
+                        imCongratulation.setAnimation(mFunction != null ? mFunction.jsonResult : "restult_like.json");
+                        if (mFunction != null)
+                            imCongratulation.setColorFilter(getResources().getColor(mFunction.color));
+                        imCongratulation.playAnimation();
+                        YoYo.with(Techniques.SlideInUp).duration(1000).playOn(scvInfor);
+                        YoYo.with(Techniques.FadeIn).duration(1000).playOn(llBackground);
+                        YoYo.with(Techniques.FadeIn).duration(1000).playOn(llToolbar);
                     }
-                });
+                }, 500);
+//                PublicHelperKt.showInterstitialAd(ResultAcitvity.this, new Function0<Unit>() {
+//                    @Override
+//                    public Unit invoke() {
+//
+//                        return null;
+//                    }
+//                });
 
 //                AdmobHelp.getInstance().showInterstitialAd(this,() -> {
 //                    imgDone.pauseAnimation();

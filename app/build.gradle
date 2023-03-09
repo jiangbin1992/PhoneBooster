@@ -12,7 +12,7 @@ android {
         applicationId "com.phone.booster.one.pro"
         minSdk 21
         targetSdk 32
-        versionCode 4
+        versionCode 1
         versionName "1.0.0"
         multiDexEnabled true
 
