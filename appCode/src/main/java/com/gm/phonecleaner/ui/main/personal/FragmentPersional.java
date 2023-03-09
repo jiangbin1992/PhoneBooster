@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 
 import com.ads.control.AdmobHelp;
 import com.ads.control.funtion.UtilsApp;
+import com.best.now.myad.WebActivity;
 import com.gm.phonecleaner.R;import com.gm.phonecleaner.R2;import com.gm.phonecleaner.R2;
 import com.gm.phonecleaner.ui.BaseFragment;
 import com.gm.phonecleaner.ui.setting.SettingActivity;
@@ -56,7 +57,8 @@ public class FragmentPersional extends BaseFragment {
         } else if (id == R.id.ll_feedback) {
             UtilsApp.SendFeedBack(getActivity(), getString(R.string.email_feedback), getString(R.string.Title_email));
         } else if (id == R.id.ll_share) {
-            UtilsApp.shareApp(getActivity());
+           // UtilsApp.shareApp(getActivity());
+            WebActivity.Companion.startActivity(getActivity(),"Privacy Policy",URL_PRIVACY_POLICY);
         }
     }
 
