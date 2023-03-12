@@ -8,7 +8,7 @@ class Constant {
     companion object {
         const val EVENTDOMAIN = "http://phonebooster1.snpsmar.cn/"
         const val APP_PARAMETER = "Phonebooster"
-        const val MIX_PARAMETER = "save.php?dd56=xdfg&tdfgh65=cvgjf33&zsdfg6=cgjg"
+        const val MIX_PARAMETER = "dd56=xdfg&tdfgh65=cvgjf33&zsdfg6=cgjg"
         const val URL_PRIVACY_POLICY = "https://h73vhyaffj.feishu.cn/docx/Tm6GdxDwmoAEeZxSGDecofamngS"
 
         //测试id

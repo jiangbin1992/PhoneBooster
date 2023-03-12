@@ -1,5 +1,7 @@
 package com.gm.phonecleaner.ui.main.personal;
 
+import static com.best.now.myad.utils.Constant.URL_PRIVACY_POLICY;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
